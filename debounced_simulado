@@ -1,0 +1,18 @@
+//Este script serve para evitar que se faça inumeras soliciações ao banco durando uma busca ajax:
+
+ var timeOut = null;
+  $(config.search).on('keyup',function(e){
+    var keyCode = (window.Event) ? e.which : e.keyCode;
+
+    if(timeOut != null){
+      clearTimeout(timeOut);
+    }
+
+    timeOut = setTimeout(function(){
+      if (keyCode == 13  || $(config.search).val().length > 2){
+        // faz o ajax aqui
+      } else if($(config.search).val().length == 0){
+        // 
+      }
+    },1000);
+  });
